@@ -9,6 +9,7 @@ Headler.h надо будет скорее всего путь прописат�
 
 Все что не обходимо на начальном Этапе )) Буду примного Благодарен если поможеш разобратся (Сильно не злись занимаюсь всем этим почти 1 месяц в этом деле Новичок(User))!
 Хорошо вписал я:
+
             let path = NSBundle.mainBundle().pathForResource("Swa", ofType: "plist")
             let resultDictionary = NSMutableArray(contentsOfFile: path!)
             resultDictionary!.setObject(NSNumber(bool: true), atIndexedSubscript: "correctText")
