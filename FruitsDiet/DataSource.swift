@@ -22,7 +22,6 @@ class DataSource {
     var fruits:[Fruit] = []
     var groups:[String] = []
     var correctHypothesis : Bool?
-    //var correctText : Bool!
     var correctText: Bool!
     
     

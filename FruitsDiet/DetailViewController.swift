@@ -8,8 +8,8 @@
 
 import UIKit
 
-let correctTextKey = "correctText"
-let correctHypothesisKey = "correctHypothesis"
+//let correctTextKey = "correctText"
+//let correctHypothesisKey = "correctHypothesis"
 
 var lmPath: String!
 var dicPath: String!
@@ -63,7 +63,7 @@ class DetailViewController:  UIViewController, UITextFieldDelegate,  OEEventsObs
     
     override func viewDidLoad()
     {
-        
+        print(fruit.correctText)
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.navigationBarHidden = true
         navigationController?.toolbarHidden = true
@@ -79,11 +79,11 @@ class DetailViewController:  UIViewController, UITextFieldDelegate,  OEEventsObs
         
         if let fruit = fruit {
             print(fruit.correctText)
-            //var Correct1 = defaults.boolForKey("Correct1")
+            
             navigationItem.title = fruit.name?.capitalizedString
             imageView.image = UIImage(named: fruit.name!.lowercaseString)
             LabelNavi = navigationItem.title!
-            //Correct1 = fruit.correctText!.boolValue
+            
             
 
         
@@ -114,14 +114,7 @@ class DetailViewController:  UIViewController, UITextFieldDelegate,  OEEventsObs
         }
         
        
-        /*if let fruit = fruit {
-           
-            navigationItem.title = fruit.name?.capitalizedString
-            imageView.image = UIImage(named: fruit.name!.lowercaseString)
-            LabelNavi = navigationItem.title!
-            Correct1 = fruit.correctText!.boolValue
-        }*/
-    }
+            }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -181,52 +174,30 @@ class DetailViewController:  UIViewController, UITextFieldDelegate,  OEEventsObs
             //let plist = NSMutableDictionary.init(object: "Swa.plist", forKey: "correctText")
             
                 print(fruit.correctText)
-            if let path = NSBundle.mainBundle().pathForResource("Swa", ofType: "plist") {
-                print("path: \(path)")
-                if let dictArray = NSArray(contentsOfFile: path) {
-                    
-                    for item in dictArray {
-                        let dict = item as? NSDictionary
-                           
+           
             
+            
+            let path = NSBundle.mainBundle().pathForResource("Swa", ofType: "plist")
+            
+            let resultDictionary = NSMutableArray(contentsOfFile: path!)
+            resultDictionary!.setValue(NSNumber(bool: true), forKey: "correctText")
+            resultDictionary!.writeToFile(path!, atomically: true)
+            
+            print(fruit.correctText)
+            
+              //  print("path: \(path)")
+            
+            
+               // if let dictArray = NSArray(contentsOfFile: path) {
+                    
+               //     for item in dictArray {
+                //        let dict = item as? NSDictionary
+
                 //dataSource.correctText = true
                 //print(fruit.correctText)
                 //print(dataSource.correctText)
                 
-                let fileManager = NSFileManager.defaultManager()
-                        if(!fileManager.fileExistsAtPath(path)) {
-                            // If it doesn't, copy it from the default file in the Bundle
-                            if let bundlePath = NSBundle.mainBundle().pathForResource("Swa", ofType: "plist") {
-                                
-                                let resultDictionary = NSMutableDictionary(contentsOfFile: bundlePath)
-                                print("Bundle Swa.plist file is --> \(resultDictionary?.description)")
-                               
-                                print("copy")
-                            } else {
-                                print("GameData.plist not found. Please, make sure it is part of the bundle.")
-                            }
-                        } else {
-                            print("GameData.plist already exits at path.")
-                            // use this to delete file from documents directory
-                            //fileManager.removeItemAtPath(path, error: nil)
-                        }
-                        
-                        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-                        print("Loaded GameData.plist file is --> \(resultDictionary?.description)")
-                        
-                        var myDict = NSDictionary(contentsOfFile: path)
-                        
-                        if let dict = myDict {
-                            //loading values
-                            bedroomFloorID = dict.objectForKey(BedroomFloorKey)!
-                            bedroomWallID = dict.objectForKey(BedroomWallKey)!
-                            //...
-                        } else {
-                            print("WARNING: Couldn't create dictionary from GameData.plist! Default values will be used!")
-                        }
-                    }
-                
-                //let plist = NSMutableDictionary(dictionary: dict!)
+                                //let plist = NSMutableDictionary(dictionary: dict!)
                 //var correctText = true
                 //plist.setObject(NSNumber(bool: true), forKey: "correctText")
                 //        plist.writeToFile(dict, atomically: <#T##Bool#>)
@@ -239,10 +210,11 @@ class DetailViewController:  UIViewController, UITextFieldDelegate,  OEEventsObs
                 //print(datasource.correctText)
                 
             
+        
             
                 
-            }
-            }
+            
+            
                 print(fruit.correctText)
 
 
